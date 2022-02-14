@@ -18,9 +18,17 @@ This project is a starting point for a Flutter application.
 To run this app use Flutter 2.10.1 channel stable.
 
 ###  Steps to run.
-1.  Open Visual Studio Code.
-2.  Connect your device.
-3.  Press `F5`.
+1.  Clone this repository:
+   - ```bash 
+        $  https://github.com/luksdemello/imc_calculator_flutter 
+     ```
+2.  Open Visual Studio Code.
+3.  Connect your device.
+4.  Press `F5 ` or run the following command:
+   - ```bash 
+      $ flutter run 
+     ```
+
 
 A few resources to get you started if this is your first Flutter project:
 
