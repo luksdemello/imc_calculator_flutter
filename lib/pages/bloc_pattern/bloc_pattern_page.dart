@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:imc_calculator/pages/block_pattern/block_pattern_controller.dart';
-import 'package:imc_calculator/pages/block_pattern/block_state.dart';
+
 import 'package:imc_calculator/widgets/imc_radial_gauge.dart';
 import 'package:intl/intl.dart';
 
 import '../../widgets/imc_form_field.dart';
+import 'bloc_pattern_controller.dart';
+import 'bloc_state.dart';
 
-class BlockPatternPage extends StatefulWidget {
-  const BlockPatternPage({Key? key}) : super(key: key);
+class BlocPatternPage extends StatefulWidget {
+  const BlocPatternPage({Key? key}) : super(key: key);
 
   @override
-  State<BlockPatternPage> createState() => _BlockPatternPageState();
+  State<BlocPatternPage> createState() => _BlocPatternPageState();
 }
 
-class _BlockPatternPageState extends State<BlockPatternPage> {
-  final _controller = BlockPatternController();
+class _BlocPatternPageState extends State<BlocPatternPage> {
+  final _controller = BlocPatternController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -44,9 +45,9 @@ class _BlockPatternPageState extends State<BlockPatternPage> {
             child: Center(
               child: Column(
                 children: [
-                  StreamBuilder<BlockState>(
+                  StreamBuilder<BlocState>(
                       stream: _controller.streamOut,
-                      initialData: BlockState(imc: 0.0),
+                      initialData: BlocState(imc: 0.0),
                       builder: (context, snapshot) {
                         var imc = snapshot.data?.imc ?? 0.0;
 
@@ -57,12 +58,12 @@ class _BlockPatternPageState extends State<BlockPatternPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  StreamBuilder<BlockState>(
+                  StreamBuilder<BlocState>(
                       stream: _controller.streamOut,
                       builder: (context, snapshot) {
                         final dataValue = snapshot.data;
 
-                        if (dataValue is BlockStateLoading) {
+                        if (dataValue is BlocStateLoading) {
                           return const CircularProgressIndicator();
                         }
 
