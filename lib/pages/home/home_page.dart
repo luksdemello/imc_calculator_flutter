@@ -24,8 +24,10 @@ class HomePage extends StatelessWidget {
               },
             ),
             ElevatedButton(
-              onPressed: () {},
               child: const Text('Value Notifier'),
+              onPressed: () {
+                _goToPage(context, '/value_notifier');
+              },
             ),
             ElevatedButton(
               onPressed: () {},
