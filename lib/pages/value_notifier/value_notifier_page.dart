@@ -31,6 +31,13 @@ class _ValueNotifierPageState extends State<ValueNotifierPage> {
   }
 
   @override
+  void dispose() {
+    _heigthEC.dispose();
+    _weigthEC.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

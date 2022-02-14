@@ -1,41 +1,29 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:imc_calculator/pages/change_notifier/change_notifier_controller.dart';
 import 'package:imc_calculator/widgets/imc_radial_gauge.dart';
 import 'package:intl/intl.dart';
 
 import '../../widgets/imc_form_field.dart';
 
-class SetStatePage extends StatefulWidget {
-  const SetStatePage({Key? key}) : super(key: key);
+class ChangeNotifierPage extends StatefulWidget {
+  const ChangeNotifierPage({Key? key}) : super(key: key);
 
   @override
-  State<SetStatePage> createState() => _SetStatePageState();
+  State<ChangeNotifierPage> createState() => _ChangeNotifierPageState();
 }
 
-class _SetStatePageState extends State<SetStatePage> {
+class _ChangeNotifierPageState extends State<ChangeNotifierPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final TextEditingController _heigthEC = TextEditingController();
 
   final TextEditingController _weigthEC = TextEditingController();
 
-  double _imc = 0.0;
-
-  Future<void> _calcImc(double weigth, double heigth) async {
-    setState(() {
-      _imc = 0.0;
-    });
-
-    await Future.delayed(const Duration(seconds: 1));
-
-    setState(() {
-      _imc = weigth / pow(heigth, 2);
-    });
-  }
+  final _controller = ChangeNotifierController();
 
   @override
   void dispose() {
+    _controller.dispose();
     _heigthEC.dispose();
     _weigthEC.dispose();
     super.dispose();
@@ -45,7 +33,7 @@ class _SetStatePageState extends State<SetStatePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('IMC Set State Page'),
+        title: const Text('IMC Change Notifier Page'),
       ),
       body: SingleChildScrollView(
         child: Form(
@@ -55,8 +43,13 @@ class _SetStatePageState extends State<SetStatePage> {
             child: Center(
               child: Column(
                 children: [
-                  ImcRadialGauge(
-                    imc: _imc,
+                  AnimatedBuilder(
+                    animation: _controller,
+                    builder: (context, widget) {
+                      return ImcRadialGauge(
+                        imc: _controller.imc,
+                      );
+                    },
                   ),
                   ImcFormField(
                     controller: _weigthEC,
@@ -88,7 +81,7 @@ class _SetStatePageState extends State<SetStatePage> {
                         final double heigth =
                             formatter.parse(_heigthEC.text) as double;
 
-                        _calcImc(weigth, heigth);
+                        _controller.calcImc(weigth, heigth);
                       }
                     },
                   )
