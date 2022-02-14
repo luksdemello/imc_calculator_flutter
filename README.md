@@ -1,4 +1,4 @@
-<img src="https://user-images.githubusercontent.com/69207514/153929857-56bee52b-ea04-4b5e-ac1c-6aa0df8a1f7f.png" alt="App images" />
+<img src="https://user-images.githubusercontent.com/69207514/153929857-56bee52b-ea04-4b5e-ac1c-6aa0df8a1f7f.png" alt="App images" height="500px"/>
 
 # imc_calculator
 
