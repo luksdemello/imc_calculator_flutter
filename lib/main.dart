@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:imc_calculator/pages/block_pattern/block_pattern_page.dart';
 import 'package:imc_calculator/pages/change_notifier/change_notifier_page.dart';
 import 'package:imc_calculator/pages/home/home_page.dart';
 import 'package:imc_calculator/pages/set_state/set_state_page.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         '/set_state': (context) => const SetStatePage(),
         '/value_notifier': (context) => const ValueNotifierPage(),
         '/change_notifier': (context) => const ChangeNotifierPage(),
+        '/block_pattern': (context) => const BlockPatternPage(),
       },
     );
   }

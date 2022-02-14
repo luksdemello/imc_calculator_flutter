@@ -36,7 +36,9 @@ class HomePage extends StatelessWidget {
               child: const Text('Change Notifier'),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                _goToPage(context, '/block_pattern');
+              },
               child: const Text('Bloc Pattern'),
             ),
           ],

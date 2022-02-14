@@ -37,7 +37,7 @@ class ImcRadialGauge extends StatelessWidget {
               startValue: 24.9,
               endValue: 29.9,
               color: Colors.orange,
-              label: 'Peso Normal',
+              label: 'SobrePeso',
             ),
             ImcGaugeRange(
               startValue: 29.9,
